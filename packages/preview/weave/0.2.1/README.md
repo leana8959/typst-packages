@@ -34,6 +34,14 @@ make the diff cleaner.
 )
 ```
 
+Another example for variadic functions
+```typ
+#compose_((
+  figure.with(supplement: none, caption: [Am stram gram]),
+  table.with(columns: (auto, auto)),
+))[Am, stram, gram,][Pic et pic et colégram,][Bour et bour et ratatam,][Am, stram, gram.]
+```
+
 You can use it for show rules just like the example above.
 ```typ
 #show link: compose_.with((
