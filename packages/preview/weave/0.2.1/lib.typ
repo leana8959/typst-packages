@@ -6,10 +6,15 @@
 
 /// Given a list of transformations, apply them to a value
 /// This is the flipped version of its counterpart without `_` suffix
-#let pipe_(transformations, input) = transformations.fold(
-  input,
-  ((x, f) => f(x)),
-)
+#let pipe_(transformations, ..input) = {
+  let (t, ..ts) = transformations
+  let once = t(..input.pos(), ..input.named())
+
+  ts.fold(
+    once,
+    ((x, f) => f(x)),
+  )
+}
 
 /// Apply a list of transformations from right to left to a value
 #let compose(input, transformations) = transformations.rev().fold(
@@ -19,7 +24,12 @@
 
 /// Compose a list of transformation from right to left, apply them to a value
 /// This is the flipped version of its counterpart without `_` suffix
-#let compose_(transformations, input) = transformations.rev().fold(
-  input,
-  ((x, f) => f(x)),
-)
+#let compose_(transformations, ..input) = {
+  let (t, ..ts) = transformations.rev()
+  let once = t(..input.pos(), ..input.named())
+
+  ts.fold(
+    once,
+    ((x, f) => f(x)),
+  )
+}

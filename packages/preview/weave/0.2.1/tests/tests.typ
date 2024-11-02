@@ -31,18 +31,39 @@
 #assert(composed("b") == "abc")
 
 #assert(
+  // composed
   compose_((
     emph,
     strong,
     underline,
     strike,
   ))[This is a very long content with a lot of words]
- ==
+==
+  // classic
   emph(
     strong(
       underline(
-        strike[This is a very long content with a lot of words]
-      )
-    )
+        strike[This is a very long content with a lot of words],
+      ),
+    ),
+  )
+)
+
+#assert(
+  // composed
+  compose_((
+    figure.with(supplement: none, caption: [Am stram gram]),
+    table.with(columns: (auto, auto)),
+  ))[Am, stram, gram,][Pic et pic et colégram,][Bour et bour et ratatam,][Am, stram, gram.]
+==
+  // classic
+  figure(
+    supplement: none,
+    caption: [Am stram gram],
+    table(
+      columns: (auto, auto),
+      [Am, stram, gram,], [Pic et pic et colégram,],
+      [Bour et bour et ratatam,], [Am, stram, gram.],
+    ),
   )
 )
