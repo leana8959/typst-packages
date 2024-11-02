@@ -6,7 +6,7 @@ The function `compose` is the `pipe` function in the mathematical order.
 Functions suffixed with underscore have their arguments flipped.
 
 ## Changelog
-- 0.2.1 Support for variadic functions
+- 0.3.0 Support for variadic functions
 - 0.2.0 Redesigned interface to work with typst's `with` keyword.
 - 0.1.0 Initial release
 
